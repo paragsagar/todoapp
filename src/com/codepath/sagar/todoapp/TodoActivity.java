@@ -112,7 +112,9 @@ public class TodoActivity extends ActionBarActivity {
 	     
 	     int position = data.getExtras().getInt("position");
 	     
-//	     Toast.makeText(this, editedText+" position:" +position + " editing item:"+todoItems.get(position), Toast.LENGTH_SHORT).show();
+//	     Toast.makeText(this, editedText+" position:" +position + " editing item:"+todoItems.get(position), Toast.LENGTH_SHORT).show();//Debug
+	     
+	     Toast.makeText(this, editedText+" Saved!", Toast.LENGTH_SHORT).show();
 	     
 	     todoItems.set(position,editedText);
 	     todoAdapter.notifyDataSetChanged();
