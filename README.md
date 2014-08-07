@@ -14,7 +14,7 @@ Required: User can edit an item and will be replaced at same position.
 
 Walkthrough of all user stories:
 
-see todApp_ParagSagar.gif
-[todApp_ParagSagar.gif]
+see
+[gif:todApp_ParagSagar.gif]
 
 GIF created with LiceCap.
