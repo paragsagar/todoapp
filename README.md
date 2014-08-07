@@ -11,7 +11,11 @@ Completed user stories:
 * [x] Required: User can Add items to todo list.
 * [x] Required: User can delete an item by click and hold.
 * [x] Required: User can edit an item and will be replaced at same position.
+* [x] Required: Data transfers to new Activity and it shows up in the Edit text. Edit text is Focused and cursor in the end of the text.
 * [x] Required: Persistant Data, it saves in a text file.
+* [x] Optional: Added toast after persistance of data.
+* [x] Optional: Update App Icons.
+
 
 Walkthrough of all user stories:
 
