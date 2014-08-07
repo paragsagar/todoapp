@@ -8,12 +8,13 @@ Time spent: 4.5 hours spent in total
 
 Completed user stories:
 
-Required: User can Add items to todo list.
-Required: User can delete an item by click and hold.
-Required: User can edit an item and will be replaced at same position.
+* [x] Required: User can Add items to todo list.
+* [x] Required: User can delete an item by click and hold.
+* [x] Required: User can edit an item and will be replaced at same position.
+* [x] Required: Persistant Data, it saves in a text file.
 
 Walkthrough of all user stories:
 
-see todApp_ParagSagar.gif
+![alt tag](todApp_ParagSagar.gif)
 
 GIF created with LiceCap.
