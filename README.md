@@ -4,7 +4,8 @@ todoapp
 A simple Android ToDo App to create list of items and removing them. 
 This is an Android demo application for creating list of ToDos. 
 
-Time spent: 4.5 hours spent in total
+Time spent (original): 4.5 hours spent 
+Time Spent (Optional req) : 3 hours.
 
 Completed user stories:
 
