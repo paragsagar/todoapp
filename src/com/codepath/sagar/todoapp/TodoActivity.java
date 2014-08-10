@@ -8,6 +8,7 @@ import org.apache.commons.io.FileUtils;
 
 import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,6 +27,7 @@ public class TodoActivity extends ActionBarActivity {
 	private ListView lvItems;
 	private EditText etNewItem;
 	private final int REQUEST_CODE = 1080;
+	TodoDataHandler dbhandler ;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -79,6 +81,7 @@ public class TodoActivity extends ActionBarActivity {
 		String newItemText = etNewItem.getText().toString();
 		todoAdapter.add(newItemText );
 		etNewItem.setText("");
+	     Toast.makeText(this, newItemText+" Saved!", Toast.LENGTH_SHORT).show();
 		writeitems();
 	}
 
@@ -122,9 +125,31 @@ public class TodoActivity extends ActionBarActivity {
 	  }
 	} 
 	
+	/**
+	 * Either write in Text file or SQLite Database
+	 */
 	
 	private void readItems()
 	{
+//		readFromFile();
+		readFromDb();
+	}
+
+	/**
+	 * Either write in Text file or SQL Lite Database
+	 */
+	private void writeitems()
+	{
+//		writeToFile();
+		writeToDb();
+	}
+	
+	
+	/**
+	 * Read from a text file. 
+	 */
+	@SuppressWarnings("unused")
+	private void readFromFile() {
 		File fileDir = getFilesDir();
 		File todoFile = new File(fileDir,"todoApp.txt");
 		try{
@@ -133,9 +158,32 @@ public class TodoActivity extends ActionBarActivity {
 			todoItems = new ArrayList<String>();
 		}
 	}
+
+	/**
+	 * write to SQLite Database
+	 */
+	private void readFromDb() {
+		dbhandler = new TodoDataHandler(getBaseContext());
+		dbhandler.open();
+		Cursor c = dbhandler.getTodoItems();
+		todoItems = new ArrayList<String>();
+		
+		if(c.moveToFirst())
+		{
+			do{
+				todoItems.add(c.getString(0));
+			}while (c.moveToNext());
+		}
+		dbhandler.close();
+	}
 	
-	private void writeitems()
-	{
+
+
+	/**
+	 * method Write to the Text file (first version of App)
+	 */
+	@SuppressWarnings("unused")
+	private void writeToFile() {
 		File fileDir = getFilesDir();
 		File todoFile = new File(fileDir,"todoApp.txt");
 		try{
@@ -143,5 +191,19 @@ public class TodoActivity extends ActionBarActivity {
 		}catch (IOException ioe){
 			ioe.printStackTrace();
 		}
+	}
+
+	/**
+	 * The Method Write to Database
+	 */
+	private void writeToDb() {
+		dbhandler = new TodoDataHandler(getBaseContext());
+		dbhandler.open();
+		dbhandler.clear();
+		for(String todoItem : todoItems)
+		{
+			dbhandler.insertTodoItems(todoItem);
+		}
+		dbhandler.close();
 	}
 }
